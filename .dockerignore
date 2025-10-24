@@ -1,0 +1,36 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+env/
+
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+.coverage
+htmlcov
+
+.DS_Store
+
+
+.git
+.gitignore
+
+# Documentation
+docs
+*.md
+README*
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
