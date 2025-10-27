@@ -1,9 +1,11 @@
 from fastapi import APIRouter
 
+from src.core.response import Response, success
+
 router = APIRouter()
 
 
-@router.post("/health")
-@router.get("/health")
+@router.post("/health", response_model=Response[None])
+@router.get("/health", response_model=Response[None])
 async def health():
-    return {"status": "ok"}
+    return success(message="ok")

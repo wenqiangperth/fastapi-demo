@@ -60,5 +60,4 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync
 
-RUN chmod +x ./docker/docker-entrypoint.sh
-CMD ["./docker/docker-entrypoint.sh"]
+CMD ["bash", "-c", "chmod +x ./docker/docker-entrypoint.sh && ./docker/docker-entrypoint.sh"]

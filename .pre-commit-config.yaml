@@ -21,12 +21,6 @@ repos:
   # ----------------------------------------------------
   # 2. 格式化工具 (Formatting)
   # ----------------------------------------------------
-  # Black: Python 黑色格式化工具 (非侵入式代码风格)
-  - repo: https://github.com/psf/black
-    rev: 25.9.0
-    hooks:
-      - id: black
-        args: ["--line-length=100"] # 推荐行长 100
 
   # isort: 导入排序工具 (必须放在 black 之后，防止冲突)
   - repo: https://github.com/PyCQA/isort
@@ -43,7 +37,7 @@ repos:
     rev: v0.14.2
     hooks:
       - id: ruff                     # Python代码检查
-        args: [--fix, --exit-non-zero-on-fix]
+        args: [--fix]
         types_or: [python, pyi, jupyter]
       - id: ruff-format             # Python代码格式化
         types_or: [python, pyi, jupyter]

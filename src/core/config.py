@@ -11,7 +11,9 @@ class Settings(BaseSettings):
     )
     PROJECT_NAME: str = "fastapi-demo"
     API_V1_STR: str = "/api/v1"
-    ENVIRONMENT: Literal["local", "test", "prod"] = "local"
+    ENV: Literal["dev", "test", "prod"] = "dev"
+    LOG_LEVEL: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
+    LOG_FILE_PATH: str = "logs"
 
 
 settings = Settings()
