@@ -14,7 +14,10 @@ class LoggingMiddleware(BaseHTTPMiddleware):
     """日志中间件"""
 
     async def dispatch(self, request: Request, call_next):
-        request_id = str(uuid4())
+        # 尝试从请求头中获取请求ID
+        request_id = request.headers.get("traceId")
+        if not request_id:
+            request_id = str(uuid4())
         request_id_var.set(request_id)
 
         start_time = time.time()
