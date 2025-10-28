@@ -4,39 +4,16 @@
 
 from fastapi import APIRouter, Path, Query
 from loguru import logger
-from pydantic import BaseModel, Field
 
 from src.core.exceptions import (
     BadRequestException,
     NotFoundException,
     UnauthorizedException,
 )
-from src.core.response import Response, success
+from src.schema.example import User, UserCreate, UserResponse
+from src.schema.response import Response, success
 
 router = APIRouter(prefix="/examples", tags=["示例接口"])
-
-
-# ==================== 数据模型 ====================
-
-
-class User(BaseModel):
-    """用户模型"""
-
-    id: int
-    username: str
-    age: int | None = None
-
-
-class UserCreate(BaseModel):
-    """创建用户请求"""
-
-    username: str = Field(..., min_length=3, max_length=20, description="用户名")
-    age: int | None = Field(None, ge=1, le=150, description="年龄")
-
-
-# ==================== 接口示例 ====================
-
-UserResponse = Response[User]
 
 
 @router.get("/users/{user_id}", response_model=UserResponse)
