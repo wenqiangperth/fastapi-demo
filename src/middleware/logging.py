@@ -7,7 +7,7 @@ from loguru import logger
 from starlette.middleware.base import BaseHTTPMiddleware
 
 # 用于存储请求信息的上下文变量
-request_id_var: ContextVar[str] = ContextVar("request_id", default="-")
+trace_id_var: ContextVar[str] = ContextVar("trace_id", default="-")
 
 
 class LoggingMiddleware(BaseHTTPMiddleware):
@@ -15,14 +15,14 @@ class LoggingMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next):
         # 尝试从请求头中获取请求ID
-        request_id = request.headers.get("traceId")
-        if not request_id:
-            request_id = str(uuid4())
-        request_id_var.set(request_id)
+        trace_id = request.headers.get("traceId") or request.headers.get("trace-id")
+        if not trace_id:
+            trace_id = str(uuid4())
+        trace_id_var.set(trace_id)
 
         start_time = time.time()
         # ⭐ 使用 contextualize 绑定 request_id 到所有后续日志
-        with logger.contextualize(request_id=request_id):
+        with logger.contextualize(trace_id=trace_id):
             # 记录请求
             logger.info(
                 f"{request.method} {request.url.path} | Client: {request.client.host}"
@@ -38,7 +38,7 @@ class LoggingMiddleware(BaseHTTPMiddleware):
                     f"Duration: {duration:.2f}ms"
                 )
 
-                response.headers["X-Request-ID"] = request_id
+                response.headers["traceId"] = trace_id
                 return response
 
             except Exception as e:

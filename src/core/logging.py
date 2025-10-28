@@ -19,7 +19,7 @@ def setup_logging():
     log_format = (
         "[<green>{time:YYYY-MM-DD HH:mm:ss}</green>] "
         "[<level>{level: <8}</level>] "
-        "[<cyan>{extra[request_id]}</cyan>] "
+        "[<cyan>{extra[trace_id]}</cyan>] "
         "[<cyan>{name}</cyan>:<cyan>{line}</cyan>] "
         "<level>{message}</level>"
     )
@@ -27,7 +27,7 @@ def setup_logging():
     file_format = (
         "{time:YYYY-MM-DD HH:mm:ss} | "
         "{level: <8} | "
-        "{extra[request_id]} | "
+        "{extra[trace_id]} | "
         "{name}:{line} | "
         "{message}"
     )
@@ -56,7 +56,7 @@ def setup_logging():
         level="ERROR",
         encoding="utf-8",
     )
-    # ⭐ 配置默认的 request_id（避免在非请求上下文中报错）
-    logger.configure(extra={"request_id": "-"})
+    # ⭐ 配置默认的 trace_id（避免在非请求上下文中报错）
+    logger.configure(extra={"trace_id": "-"})
 
     return logger
