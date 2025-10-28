@@ -5,13 +5,13 @@
 from fastapi import APIRouter, Path, Query
 from loguru import logger
 
-from src.core.exceptions import (
+from app.core.exceptions import (
     BadRequestException,
     NotFoundException,
     UnauthorizedException,
 )
-from src.schema.example import User, UserCreate, UserResponse
-from src.schema.response import Response, success
+from app.schema.example import User, UserCreate, UserResponse
+from app.schema.response import Response, success
 
 router = APIRouter(prefix="/examples", tags=["示例接口"])
 

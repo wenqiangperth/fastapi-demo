@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from src.routes import analyze_answers, eval_image, example, health
+from app.routes import analyze_answers, eval_image, example, health
 
 api_router = APIRouter()
 

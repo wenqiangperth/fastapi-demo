@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from src.schema.eval_image import EvalImageRequest, EvalImageResponse
-from src.schema.response import success
+from app.schema.eval_image import EvalImageRequest, EvalImageResponse
+from app.schema.response import success
 
 router = APIRouter()
 

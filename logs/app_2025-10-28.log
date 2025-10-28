@@ -1,0 +1,6 @@
+2025-10-28 17:32:01 | INFO     | 5189457d-a629-4db9-b00d-3190296e5d36 | app.middleware.logging:27 | GET /health | Client: testclient
+2025-10-28 17:32:01 | INFO     | 5189457d-a629-4db9-b00d-3190296e5d36 | app.middleware.logging:35 | GET /health | Status: 404 | Duration: 0.96ms
+2025-10-28 17:32:20 | INFO     | 95f1f9b6-b096-402a-9363-26c126e0f38a | app.middleware.logging:27 | GET /api/v1/health | Client: testclient
+2025-10-28 17:32:20 | INFO     | 95f1f9b6-b096-402a-9363-26c126e0f38a | app.middleware.logging:35 | GET /api/v1/health | Status: 200 | Duration: 1.28ms
+2025-10-28 17:35:56 | INFO     | d7882030-08b1-41dd-9bd7-3f989c29bbbc | app.middleware.logging:27 | GET /api/v1/health | Client: testclient
+2025-10-28 17:35:56 | INFO     | d7882030-08b1-41dd-9bd7-3f989c29bbbc | app.middleware.logging:35 | GET /api/v1/health | Status: 200 | Duration: 2.71ms

@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from src.schema.response import Response
+from app.schema.response import Response
 
 
 class AnalyzeAnswersItem(BaseModel):

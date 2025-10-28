@@ -1,17 +1,17 @@
 from fastapi import FastAPI
 from fastapi.exceptions import HTTPException, RequestValidationError
 
-from src.core.config import settings
-from src.core.exceptions import (
+from app.core.config import settings
+from app.core.exceptions import (
     APIException,
     api_exception_handler,
     general_exception_handler,
     http_exception_handler,
     validation_exception_handler,
 )
-from src.core.logging import setup_logging
-from src.middleware.logging import LoggingMiddleware  # 导入中间件
-from src.routes.main import api_router
+from app.core.logging import setup_logging
+from app.middleware.logging import LoggingMiddleware  # 导入中间件
+from app.routes.main import api_router
 
 # 配置日志
 setup_logging()

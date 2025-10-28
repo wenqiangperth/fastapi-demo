@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from src.schema.analyze_answers import AnalyzeAnswersItem, AnalyzeAnswersResponse
-from src.schema.response import success
+from app.schema.analyze_answers import AnalyzeAnswersItem, AnalyzeAnswersResponse
+from app.schema.response import success
 
 router = APIRouter()
 
