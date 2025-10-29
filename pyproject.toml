@@ -5,12 +5,66 @@ description = "fastapi的基础模板项目"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "fastapi>=0.119.1",
+    "fastapi[standard]>=0.119.1",
     "gunicorn>=23.0.0",
     "httpx>=0.28.1",
     "loguru>=0.7.3",
     "pydantic>=2.12.3",
     "pydantic-settings>=2.11.0",
-    "pytest>=8.4.2",
     "uvicorn[standard]>=0.38.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
+
+# pyproject.toml
+
+# 全局设置
+[tool.ruff]
+# 设置你项目支持的最低 Python 版本
+# ruff 会据此推荐更现代的语法
+target-version = "py310"  # 例如：Python 3.10
+
+# 设置单行最大长度 (与 ruff-format 共享)
+line-length = 88 # (使用 Black 默认值)
+
+
+# Linter 设置
+[tool.ruff.lint]
+#
+# "select"：选择要启用的规则集
+#
+# 这是我推荐的“基础+进阶”规则集
+#
+select = [
+    # --- 基础规则 (必选) ---
+    "E",  # pycodestyle (Errors) - 基础语法错误
+    "F",  # Pyflakes - 逻辑错误 (如：未定义的变量、未使用的 import)
+    "W",  # pycodestyle (Warnings) - 风格警告
+    "I",  # isort - Import 排序 (ruff 会自动修复)
+    
+    "B",  # flake8-bugbear - 常见的 Bug 和设计问题
+    "UP", # pyupgrade - 升级到现代 Python 语法 (ruff 会自动修复)
+    "A",  # flake8-builtins - 检查内置函数/类型的覆盖 (如 `list = ...`)
+    "C4", # flake8-comprehensions - 简化推导式 (如 `list(x for x in ...)`)
+    "RUF",# Ruff-specific rules - Ruff 特有的高效规则
+
+    # --- 团队规范 (可选, 但推荐) ---
+    "TID", # flake8-tidy-imports - 限制使用相对导入
+    "T20", # flake8-print - 禁止 `print` (强制使用 logging)
+    "T100" # 检查调试语句
+]
+ignore = [
+    "RUF002",
+    "RUF003"
+]
+
+
+#
+# "fixable"：选择 ruff 应该尝试自动修复的规则
+# 设置为 ["ALL"] 意味着 "只要你能修, 就帮我修"
+#
+fixable = ["ALL"]
+

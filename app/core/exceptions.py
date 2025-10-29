@@ -34,7 +34,7 @@ class NotFoundException(APIException):
 class UnauthorizedException(APIException):
     """未授权"""
 
-    def __init__(self, message: str = "未授权，请先登录", data: Any = None):
+    def __init__(self, message: str = "未授权, 请先登录", data: Any = None):
         super().__init__(message, code=401, data=data)
 
 
@@ -95,7 +95,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 async def general_exception_handler(request: Request, exc: Exception):
     """兜底异常处理"""
     logger.error(
-        f"Unhandled Exception | Path: {request.url.path} | Error: {str(exc)}",
+        f"Unhandled Exception | Path: {request.url.path} | Error: {exc!s}",
         exc_info=True,
     )
 

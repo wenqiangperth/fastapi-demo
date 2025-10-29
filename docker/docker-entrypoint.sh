@@ -20,7 +20,7 @@ export GUNICORN_LOGLEVEL=${GUNICORN_LOGLEVEL:-info}
 
 echo "Starting Gunicorn with uvicorn.workers.UvicornWorker workers..."
 
-exec gunicorn src.main:app \
+exec gunicorn app.main:app \
     --workers "$WORKER_NUM" \
     --worker-class "uvicorn.workers.UvicornWorker" \
     --bind "0.0.0.0:$SERVICE_PORT" \

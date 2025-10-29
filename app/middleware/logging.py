@@ -47,6 +47,6 @@ class LoggingMiddleware(BaseHTTPMiddleware):
                 logger.error(
                     f"{request.method} {request.url.path} | "
                     f"Duration: {duration:.2f}ms | "
-                    f"Error: {str(e)}"
+                    f"Error: {e!s}"
                 )
                 raise

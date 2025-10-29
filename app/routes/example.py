@@ -95,7 +95,8 @@ async def create_user(user_in: UserCreate):
     返回:
     {
         "code": 422,
-        "message": "参数验证失败: username: ensure this value has at least 3 characters; age: ensure this value is less than or equal to 150",
+        "message": "参数验证失败: username: ensure this value has at least 3
+        characters; age: ensure this value is less than or equal to 150",
         "data": {...}
     }
     """
@@ -150,7 +151,7 @@ async def delete_user(
     """
     # 模拟：没有 token 视为未授权
     if not token:
-        raise UnauthorizedException("未授权，请提供 token 参数")
+        raise UnauthorizedException("未授权, 请提供 token 参数")
 
     # 模拟：token 不是 valid_token 视为未授权
     if token != "valid_token":
